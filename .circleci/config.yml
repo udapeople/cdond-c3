@@ -193,7 +193,7 @@ jobs:
           command: |
             aws cloudformation deploy \
               --template-file .circleci/files/backend.yml \
-              --tags Name udapeople-backend-${ID} \
+              --tags Key=Name Value=udapeople-frontend-${ID} \
               --region ${AWS_DEFAULT_REGION} \
               --stack-name udapeople-backend-${CIRCLE_WORKFLOW_ID} \
               --parameter-overrides ID="${CIRCLE_WORKFLOW_ID}"  
@@ -202,7 +202,7 @@ jobs:
           command: |
             aws cloudformation deploy \
               --template-file .circleci/files/frontend.yml \
-              --tags Name udapeople-frontend-${ID} \
+              --tags Key=Name Value=udapeople-frontend-${ID} \
               --region ${AWS_DEFAULT_REGION} \
               --stack-name udapeople-frontend-${CIRCLE_WORKFLOW_ID} \
               --parameter-overrides ID="${CIRCLE_WORKFLOW_ID}
