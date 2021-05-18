@@ -196,7 +196,7 @@ jobs:
               --tags Key=Name Value=udapeople-frontend-${ID} \
               --region ${AWS_DEFAULT_REGION} \
               --stack-name udapeople-backend-${CIRCLE_WORKFLOW_ID} \
-              --parameter-overrides ID="${CIRCLE_WORKFLOW_ID}"  
+              --parameter-overrides ID="dfh4hjitrghiuy5466yoity"  
       - run:
           name: Ensure front-end infrastructure exist
           command: |
@@ -205,7 +205,7 @@ jobs:
               --tags Key=Name Value=udapeople-frontend-${ID} \
               --region ${AWS_DEFAULT_REGION} \
               --stack-name udapeople-frontend-${CIRCLE_WORKFLOW_ID} \
-              --parameter-overrides ID="${CIRCLE_WORKFLOW_ID}
+              --parameter-overrides ID="dfh4hjitrghiuy5466yoity"
       - run:
           name: Add back-end ip to ansible inventory
           command: |
@@ -216,6 +216,7 @@ jobs:
             --query "Reservations[*].Instances[0].PublicDnsName" \
             --output text >> project/.circleci/ansible/inventory.ini 
             echo -e "[all:vars]\nansible_user=ubuntu" >> project/.circleci/ansible/inventory.ini
+      - run: nano ~/project/.circleci/ansible/inventory.ini
       - persist_to_workspace:
           root: ~/
           paths:
